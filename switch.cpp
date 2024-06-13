@@ -60,21 +60,20 @@ int MENUswitch(){
 int PROBLEMAS(void){
 		int r,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
 	do{
-	printf("pregunta 1\n");
-	printf("respuesta correcta 2");
+	printf("a) %cCuantas veces se pueden anidar comandos switch dentro de otros comandos switch?\n",168);
+	printf("1) Una vez\n");
+	printf("2) Dos veces\n");
+	printf("3) Las veces que necesarias\n");
 		scanf("%d",&r1);
 		if(r1==2)r1=1;
-		else r1=0;
-	printf("pregunta 2\n");
-	printf("respuesta correcta 2");
+		else r2=0;
+	printf("b) %cQue le hace falta al programa:\n switch( ){\n\tcase 1:\n\tbrake:}\n",168);
+	printf("1) Una variable\n");
+	printf("2) Una variable con un valor asignado\n");
+	printf("3) Un caracter\n");
 		scanf("%d",&r2);
 		if(r2==2)r2=1;
 		else r2=0;
-	printf("pregunta 3\n");
-	printf("respuesta correcta 2");
-		scanf("%d",&r3);
-		if(r3==2)r3=1;
-		else r3=0;
 	printf("pregunta 4\n");
 	printf("respuesta correcta 2");
 		scanf("%d",&r4);
