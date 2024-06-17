@@ -1061,11 +1061,18 @@ int i=1, opc;
 int verificadorCaracter(void){ // verificador que si ingresa un caracter diferente a un numero le pide volverlo a leer 
 int i, c1;
 char c;
+int length;
 	do{
     scanf("%d",&c1);
     c = getchar(); //Le asigno el valor leido a c con la funcion getchar
     if(isalpha(c)) {
-        printf("Caracter incorrecto ingresa otro..\n");
+    	length = strlen(c);
+    	if(length >= 2){
+    		printf("Caracter incorrecto ingresa otro..\n");
+    		i = 0;
+		} else{
+        	printf("Caracter incorrecto ingresa otro..\n");
+    	}
         i=0;
     } else {
         i=1;
