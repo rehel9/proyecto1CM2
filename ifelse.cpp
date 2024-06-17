@@ -8,10 +8,7 @@ void problemario(void); // CONTIENE EL DESARROLLO DEL MENU IF ELSE EJECUTANDO LA
 int cuestionario(void); // CONTIENE LAS PREGUNTAS QUE HAREMOS
 void mostrarTeoria(void); //Contiene a la teoria 
 int verificadorCaracter(void);
-int main(){
-problemario();
-return 0;
-}
+
 //////////////////////////////////DESARROLLO DE FUNCIONES: MENU, INFO, CUESTIONARIO, VERIFICADOR////////////////////////////////////////
 int menu_ifelse(void){
 	int op;
