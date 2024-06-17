@@ -20,7 +20,7 @@ int switchDo(){
 		case 2: 
 			if(BANDERA==1){
 			
-			op2= PROBLEMAS();
+			op2= problemas();
 			if(op2==1){
 
 			BANDERA=1;}
@@ -57,7 +57,7 @@ int MENUswitch(){
 	return op;
 }
 
-int PROBLEMAS(void){
+int problemas(void){
 		int r,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
 	do{
 	printf("a) %cCuantas veces se pueden anidar comandos switch dentro de otros comandos switch?\n",168);

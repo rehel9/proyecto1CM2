@@ -8,8 +8,8 @@
 // de analisis del programa
 // PROGRAMAS
 
-#include "ifelse.c";
-#include "switch.c";
+#include "ifelse.cpp";
+//#include "switch.cpp";
 
 int main(){
 	int opc;
@@ -20,11 +20,11 @@ int main(){
 		scanf("%d", &opc);
 		switch(opc){
 			case 1:
-				ifelse();
+				ifElse();
 				//Se iniciara el menu de "teoria.c"
 				break;
 			case 2:
-				switchDo();
+				//switchDo();
 				//Se iniciara el menu de "cuestionario.c"
 				break;
 			default:

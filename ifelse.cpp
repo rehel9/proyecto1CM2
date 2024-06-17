@@ -4,7 +4,7 @@
 #include<windows.h>
 #include <ctype.h>
 int menu_ifelse( void ); //CONTIENE AL MENU PRINCIPAL IF ELSE
-void problemario(void); // CONTIENE EL DESARROLLO DEL MENU IF ELSE EJECUTANDO LAS DEMASS FUNCIONES
+void ifElse(void); // CONTIENE EL DESARROLLO DEL MENU IF ELSE EJECUTANDO LAS DEMASS FUNCIONES
 int cuestionario(void); // CONTIENE LAS PREGUNTAS QUE HAREMOS
 void mostrarTeoria(void); //Contiene a la teoria 
 int verificadorCaracter(void);
@@ -14,14 +14,15 @@ int menu_ifelse(void){
 	int op;
 	printf("\nMENU DE IF Y ELSE \n");
 	printf("1.- Introduccion a como usar if y else...\n");
-	printf("2.- Problemario: \n");
+	printf("2.- Cuestionario: \n");
 	printf("3.- Terminar programa \n");
 	printf("\nIngresa la opcion deseada no olvides que antes \nde ir al cuestionario debes ver la informacion !\n");
 	op = verificadorCaracter();
 	return op;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void problemario(void){
+void ifElse(void){
+	system("cls");
 	int op,op2,BANDERA=0; // op es la opcion del men, op2 es la opcion del cuestinario uso a BANDERA PARA SALIR DEL CICLO DE SER NECESARIO (1) LO REPITE (2) SACA
 	do{
     op = menu_ifelse(); // llamado al menu if else
