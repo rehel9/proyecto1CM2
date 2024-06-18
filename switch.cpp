@@ -28,14 +28,7 @@ void SC(int ForgC);
 	int SUBMENU2(void);
 	int SUBMENU3(void);
 void PswitchDo(int op);
-//////////////////////////inicio de main
-int main(){
-	int opp;
-	uno:
-	opp=PMENUSwitch();
-	PswitchDo(opp);
-}
-///////////////////////////fin de main
+//////////////////////////
 void PswitchDo(int op){
 	{
 		switch(op)
