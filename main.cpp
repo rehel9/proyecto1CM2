@@ -8,8 +8,8 @@
 // de analisis del programa
 // PROGRAMAS
 
-#include "ifelse.c";
-#include "switch.c";
+#include "ifelse.cpp";
+#include "switch.cpp";
 
 int main(){
 	int opc;
