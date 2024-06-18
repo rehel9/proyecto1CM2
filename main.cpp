@@ -20,11 +20,14 @@ int main(){
 		scanf("%d", &opc);
 		switch(opc){
 			case 1:
-				ifelse();
+				//ifelse();
 				//Se iniciara el menu de "ifelse.cpp"
 				break;
 			case 2:
-				switchDo();
+				system("cls");
+				int opp;
+				opp = PMENUSwitch();
+				PswitchDo(opp);
 				//Se iniciara el menu de "switch.cpp"
 				break;
 			default:
