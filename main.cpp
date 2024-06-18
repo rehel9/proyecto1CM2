@@ -24,7 +24,9 @@ int main(){
 				//Se iniciara el menu de "ifelse.cpp"
 				break;
 			case 2:
-				switchDo();
+				int opp;
+				opp = PMENUswitch;
+				PswitchDo(opp);
 				//Se iniciara el menu de "switch.cpp"
 				break;
 			default:
