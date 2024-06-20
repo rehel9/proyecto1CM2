@@ -49,6 +49,7 @@ void PswitchDo(int op){
 			break;
 			default: printf("Vuelve a escoger una opcion valida"); 
 		break;
+
 		}
 	}
 }
@@ -64,10 +65,12 @@ int PMENUSwitch(){
 	scanf("%d",&op);
 	return op;
 }
+
 void Pproblemas(void){
 		int r=0,r1,r9=0,op;
 		system("cls");
 	SC(4);printf("\t\tPARA PASAR A LA SIGUIENTE PARTE ES NECESARIO TENER MAS DE CINCO PREGUNTAS CORRECTAS\n");SC(7);
+
 	do{
 	for(r9=0;r9<=3;r9++)
 	{

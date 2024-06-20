@@ -9,6 +9,7 @@
 // PROGRAMAS
 
 #include "ifelse.cpp";
+
 #include "switch.cpp";
 
 int main(){
@@ -20,8 +21,9 @@ int main(){
 		scanf("%d", &opc);
 		switch(opc){
 			case 1:
-				//ifelse();
-				//Se iniciara el menu de "ifelse.cpp"
+
+				ifElse();
+				//Se iniciara el menu de "teoria.c"
 				break;
 			case 2:
 				system("cls");
@@ -29,6 +31,7 @@ int main(){
 				opp = PMENUSwitch();
 				PswitchDo(opp);
 				//Se iniciara el menu de "switch.cpp"
+
 				break;
 			default:
 			break;
