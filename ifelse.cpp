@@ -5,16 +5,13 @@
 #include<conio.h>
 #include <ctype.h>
 int menu_ifelse( void ); //CONTIENE AL MENU PRINCIPAL IF ELSE
-void problemario(void); // CONTIENE EL DESARROLLO DEL MENU IF ELSE EJECUTANDO LAS DEMASS FUNCIONES
+void ifElse(void); // CONTIENE EL DESARROLLO DEL MENU IF ELSE EJECUTANDO LAS DEMASS FUNCIONES
 int cuestionario(void); // CONTIENE LAS PREGUNTAS QUE HAREMOS
 void mostrarTeoria(void); //Contiene a la teoria 
 int verificadorCaracter(void);
 void SC(int ForgC);
 int verificadorRango(void);
-int main(){
-problemario();
-return 0;
-}
+
 //////////////////////////////////DESARROLLO DE FUNCIONES: MENU, INFO, CUESTIONARIO, VERIFICADOR////////////////////////////////////////
 int menu_ifelse(void){
 	int op;
@@ -29,7 +26,7 @@ int menu_ifelse(void){
 	return op;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void problemario(void){
+void ifElse(void){
 	int op,op2,BANDERA=0; // op es la opcion del men, op2 es la opcion del cuestinario uso a BANDERA PARA SALIR DEL CICLO DE SER NECESARIO (1) LO REPITE (2) SACA
 	do{
     op = menu_ifelse(); // llamado al menu if else
@@ -515,7 +512,7 @@ respuesta=verificadorCaracter();
 	  if(respuestaError==2){
 	    system("cls");
 		mostrarTeoria();
-		printf("\n\n\tÂ¿Deseas contestar(1) o Pasar a la siguiente pregunta(2): ");
+		printf("\n\n\tÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2): ");
 		respuestaError2=verificadorRango();
 	 if(respuestaError2==1){
 		i--;
@@ -582,7 +579,7 @@ if(respuesta==1){
 	if(respuestaError==2){
 	system("cls");
 	mostrarTeoria();
-	printf("\n\n\tÂ¿Deseas contestar(1) o Pasar a la siguiente pregunta(2)?: ");
+	printf("\n\n\tÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2)?: ");
 	respuestaError2=verificadorRango();
 	 if(respuestaError2==1){
 		i--;
@@ -1146,7 +1143,7 @@ int i=1, opc;
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
     		printf("\t\ty el resultado de evaluar dicha expresi%cn es falso (2>5) por lo que el programa\n",162);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
-    		printf("\t\tsalta hasta la l%cnea 10 y muestra \"C es el n%cmero mayor\".\n",161,163);
+    		printf("\t\tsalta hasta la l%cnea 10Â y muestra \"C es el n%cmero mayor\".\n",161,163);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
     		printf("\t\tLuego va a la l%cnea 11 y verifica el cierre de llaves y finalmente salta\n",161);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");

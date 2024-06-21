@@ -908,6 +908,7 @@ void pausa(int tipo){
 		Beep(2500,2500);
 	}
 }
+
 void SC(int ForgC){
  WORD wColor;
 
