@@ -909,6 +909,7 @@ void pausa(int tipo){
 	}
 }
 
+/*
 void SC(int ForgC){
  WORD wColor;
 
@@ -922,3 +923,4 @@ void SC(int ForgC){
  return;
 }
 
+*/

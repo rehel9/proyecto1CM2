@@ -27,6 +27,7 @@ int menu_ifelse(void){
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ifElse(void){
+	system("cls");
 	int op,op2,BANDERA=0; // op es la opcion del men, op2 es la opcion del cuestinario uso a BANDERA PARA SALIR DEL CICLO DE SER NECESARIO (1) LO REPITE (2) SACA
 	do{
     op = menu_ifelse(); // llamado al menu if else
