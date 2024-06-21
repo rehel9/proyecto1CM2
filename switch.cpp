@@ -5,34 +5,35 @@
 #include<math.h>
 #include<dos.h>
 #include<dir.h>
+void PswitchDo(void);//swtich principal del programa
 void PMENUSwitch( void );//esta funcion visualiza el menu principal 
 void Pproblemas(void);//esta funcion visuliza todo el cuestionario del tema y nos da una calificacion
-void PmostrarTeoria(void);//esta funcion nos visualiza todos los ejemplos que se trabajaron
+void Pteoria(void);//Esta funcion engloba todas las funciones de teoria junto con los ejemplos para su visualizacion en el programa
 void T1(void);//esta funcion es para visualizar la primera hoja de teoria donde se habla sobre como funciona switch y que hace
 void T2(void);//esta funcion nos muestra la sintaxis correcta dentro del comando switch
 void T3(void);//esta funcion nos muestra la sintaxis correcta cuando se anidan comandos switch
+void Ejemplos(void);//esta funcion nos visualiza todos los ejemplos que se trabajaron
+	void mostrarMenu();//////Visualizacion del Menu General ////////
+	int SUBMENU2(void);//////////Menu De imaginarios//////////
+	int SUBMENU3(void);//////////Menu Racionales//////////
+	void SwitchNumeros(int numero);// DEARROLLO DE switch DE EJEMPLO NUMEROS
+	void SwitchTrigonometrico(int opcion);/////// Desarrollo de calculos para  trigonometricos ///////
+	void SwitchPotencias(int opcion);/////////////// Desarrollo de calculos para Potencias ////////////////////
+	void calcularSumaImaginarios();///////// Inicio de Desarrollo de suma imaginarios/////
+	void calcularRestaImaginarios();//////// Inicio Desarrolo de resta imaginarios/////////
+	void calcularProductoImaginarios();////////// Inicio Desarrollo de producto imaginarios
+	void calcularDivisionImaginarios();///////// Inicio de Desarrollo division de imaginarios////
+	void calcularSumaRacionales();/////// Inicio de Desarrollo de suma Racionales/////
+	void calcularRestaRacionales();///////// Inicio de Desarrollo de resta Racionales//////
+	void calcularProductoRacionales();///////// Inicio de Desarrollo de producto Racionales//////
+	void calcularDivisionRacionales();//////// Inicio de Desarrollo de division Racionales//////
+	
 void SC(int ForgC);//esta funcion sirve para cambiar el color de las letras
-	void SwitchNumeros(int numero);
-	void SwitchTrigonometrico(int opcion);
-	void SwitchPotencias(int opcion);
-	void mostrarMenu();
-	void calcularSumaImaginarios();
-	void calcularRestaImaginarios();
-	void calcularProductoImaginarios();
-	void calcularDivisionImaginarios();
-	void calcularSumaRacionales();
-	void calcularRestaRacionales();
-	void calcularProductoRacionales();
-	void calcularDivisionRacionales();
-	int SUBMENU2(void);
-	int SUBMENU3(void);
-void PswitchDo(void);//swtich principal del programa
-//////////////////////////inicio de main
+//////////////////////////inicio de main/////////////////////////////////////////////////////////////////////////
 int main(){
-	int op;
 	PswitchDo();
 }
-///////////////////////////fin de main
+///////////////////////////fin de main////////////////////////////////////////////////////////////////////////////
 void PswitchDo(void){
 	int op;
 	uno:
@@ -43,10 +44,7 @@ void PswitchDo(void){
 		switch(op)
 		{
 			case 1:
-				T1();
-				T2();
-				T3();
-				PmostrarTeoria();
+				Pteoria();
 				goto uno;
 			break;
 			case 2:
@@ -515,7 +513,13 @@ void Pproblemas(void){
 	}while(r<=6);
 	system("pause");
 }
-void PmostrarTeoria(void){	
+void Pteoria(void){
+				T1();
+				T2();
+				T3();
+				Ejemplos();
+}
+void Ejemplos(void){	
 int op=0;
     do { // inicio de ciclo do-while 
     	system("cls");
@@ -825,7 +829,7 @@ void calcularRestaImaginarios() {//////// Inicio Desarrolo de resta imaginarios/
       getch();
 }////////Fin de desarrollo /////////////
 
-void calcularProductoImaginarios() {////////// Inicio de Desarrollo de suma imaginarios///////
+void calcularProductoImaginarios() {////////// Inicio de Desarrollo de producto imaginarios///////
     float a, b, c, d, real, imag;
      system("cls");
      printf("\n");
@@ -1070,4 +1074,3 @@ void SC(int ForgC){//esta funcion es para el cambio de color
  }
  return;
 }
-
