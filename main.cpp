@@ -24,7 +24,7 @@ int main(){
 				system("cls");
 				ifElse();
 				system("cls");
-				//Se iniciara el menu de "teoria.c"
+				//Se iniciara el menu de "ifelse.cpp"
 				break;
 			case 2:
 				system("cls");
