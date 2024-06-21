@@ -54,10 +54,12 @@ void PswitchDo(void){
 			case 3:
 				printf("salir del programa");
 			break;
+
 			default: 
 			printf("Vuelve a escoger una opcion valida"); 
 			goto uno;
 			break;
+
 		}
 }
 void PMENUSwitch(){
@@ -68,10 +70,13 @@ void PMENUSwitch(){
 	printf("2.- Problemario: \n");
 	printf("3.- Terminar programa \n");
 }
+
 void Pproblemas(void){
 		int r=0,r1,r9=0,op;
 		system("cls");
+
 	SC(4);printf("\t\tPARA PASAR A LA SIGUIENTE PARTE ES NECESARIO TENER MAS DE SEIS PREGUNTAS CORRECTAS\n");SC(7);
+
 	do{
 	for(r9=0;r9<=3;r9++)
 	{
@@ -1062,7 +1067,12 @@ void T3(void){
 	system("pause");
 	system("cls");
 }
+
+/*
 void SC(int ForgC){//esta funcion es para el cambio de color
+=======
+
+
  WORD wColor;
 
   HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -1074,3 +1084,7 @@ void SC(int ForgC){//esta funcion es para el cambio de color
  }
  return;
 }
+
+
+*/
+
