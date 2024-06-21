@@ -27,7 +27,6 @@ int menu_ifelse(void){
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ifElse(void){
-	system("cls");
 	int op,op2,BANDERA=0; // op es la opcion del men, op2 es la opcion del cuestinario uso a BANDERA PARA SALIR DEL CICLO DE SER NECESARIO (1) LO REPITE (2) SACA
 	do{
     op = menu_ifelse(); // llamado al menu if else
@@ -513,7 +512,7 @@ respuesta=verificadorCaracter();
 	  if(respuestaError==2){
 	    system("cls");
 		mostrarTeoria();
-		printf("\n\n\tÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2): ");
+		printf("\n\n\tÃƒâ€šÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2): ");
 		respuestaError2=verificadorRango();
 	 if(respuestaError2==1){
 		i--;
@@ -580,7 +579,7 @@ if(respuesta==1){
 	if(respuestaError==2){
 	system("cls");
 	mostrarTeoria();
-	printf("\n\n\tÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2)?: ");
+	printf("\n\n\tÃƒâ€šÃ‚Â¿Deseas contestar(1) o Pasar a la siguiente pregunta(2)?: ");
 	respuestaError2=verificadorRango();
 	 if(respuestaError2==1){
 		i--;
@@ -1144,7 +1143,7 @@ int i=1, opc;
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
     		printf("\t\ty el resultado de evaluar dicha expresi%cn es falso (2>5) por lo que el programa\n",162);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
-    		printf("\t\tsalta hasta la l%cnea 10Â y muestra \"C es el n%cmero mayor\".\n",161,163);
+    		printf("\t\tsalta hasta la l%cnea 10Ã‚Â y muestra \"C es el n%cmero mayor\".\n",161,163);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");
     		printf("\t\tLuego va a la l%cnea 11 y verifica el cierre de llaves y finalmente salta\n",161);
     		printf("\t\t-----------------------------------------------------------------------------------------------------\n");

@@ -16,20 +16,20 @@ int main(){
 	int opc;
 	do{
 		printf("");
-		printf("Bienvenido\n");
-		printf("1.- If-Else\n2.- Switch\n3.-SALIR\n");
+		printf("\t\t\t\tBienvenido, %cQue quieres aprender hoy?\n\n", 168);
+		printf("\t\t\t\t\t1.- If-Else\n\t\t\t\t\t2.- Switch\n\t\t\t\t\t3.-SALIR\n");
 		scanf("%d", &opc);
 		switch(opc){
 			case 1:
-
+				system("cls");
 				ifElse();
+				system("cls");
 				//Se iniciara el menu de "teoria.c"
 				break;
 			case 2:
 				system("cls");
-				int opp;
-				opp = PMENUSwitch();
-				PswitchDo(opp);
+				PswitchDo();
+				system("cls");
 				//Se iniciara el menu de "switch.cpp"
 
 				break;
