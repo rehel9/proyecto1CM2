@@ -29,11 +29,7 @@ void Ejemplos(void);//esta funcion nos visualiza todos los ejemplos que se traba
 	void calcularDivisionRacionales();//////// Inicio de Desarrollo de division Racionales//////
 	
 void SC(int ForgC);//esta funcion sirve para cambiar el color de las letras
-//////////////////////////inicio de main/////////////////////////////////////////////////////////////////////////
-int main(){
-	PswitchDo();
-}
-///////////////////////////fin de main////////////////////////////////////////////////////////////////////////////
+
 void PswitchDo(void){
 	int op;
 	uno:
