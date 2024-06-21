@@ -5,71 +5,77 @@
 #include<math.h>
 #include<dos.h>
 #include<dir.h>
-int PMENUSwitch( void );
-void Pproblemas(void);
-void PmostrarTeoria(void);
-void T1(void);
-void T2(void);
-void T3(void);
-void pausa(int tipo);
-void SC(int ForgC);
-	void SwitchNumeros(int numero);
-	void SwitchTrigonometrico(int opcion);
-	void SwitchPotencias(int opcion);
-	void mostrarMenu();
-	void calcularSumaImaginarios();
-	void calcularRestaImaginarios();
-	void calcularProductoImaginarios();
-	void calcularDivisionImaginarios();
-	void calcularSumaRacionales();
-	void calcularRestaRacionales();
-	void calcularProductoRacionales();
-	void calcularDivisionRacionales();
-	int SUBMENU2(void);
-	int SUBMENU3(void);
-void PswitchDo(int op);
-//////////////////////////
-void PswitchDo(int op){
-	{
+void PswitchDo(void);//swtich principal del programa
+void PMENUSwitch( void );//esta funcion visualiza el menu principal 
+void Pproblemas(void);//esta funcion visuliza todo el cuestionario del tema y nos da una calificacion
+void Pteoria(void);//Esta funcion engloba todas las funciones de teoria junto con los ejemplos para su visualizacion en el programa
+void T1(void);//esta funcion es para visualizar la primera hoja de teoria donde se habla sobre como funciona switch y que hace
+void T2(void);//esta funcion nos muestra la sintaxis correcta dentro del comando switch
+void T3(void);//esta funcion nos muestra la sintaxis correcta cuando se anidan comandos switch
+void Ejemplos(void);//esta funcion nos visualiza todos los ejemplos que se trabajaron
+	void mostrarMenu();//////Visualizacion del Menu General ////////
+	int SUBMENU2(void);//////////Menu De imaginarios//////////
+	int SUBMENU3(void);//////////Menu Racionales//////////
+	void SwitchNumeros(int numero);// DEARROLLO DE switch DE EJEMPLO NUMEROS
+	void SwitchTrigonometrico(int opcion);/////// Desarrollo de calculos para  trigonometricos ///////
+	void SwitchPotencias(int opcion);/////////////// Desarrollo de calculos para Potencias ////////////////////
+	void calcularSumaImaginarios();///////// Inicio de Desarrollo de suma imaginarios/////
+	void calcularRestaImaginarios();//////// Inicio Desarrolo de resta imaginarios/////////
+	void calcularProductoImaginarios();////////// Inicio Desarrollo de producto imaginarios
+	void calcularDivisionImaginarios();///////// Inicio de Desarrollo division de imaginarios////
+	void calcularSumaRacionales();/////// Inicio de Desarrollo de suma Racionales/////
+	void calcularRestaRacionales();///////// Inicio de Desarrollo de resta Racionales//////
+	void calcularProductoRacionales();///////// Inicio de Desarrollo de producto Racionales//////
+	void calcularDivisionRacionales();//////// Inicio de Desarrollo de division Racionales//////
+	
+void SC(int ForgC);//esta funcion sirve para cambiar el color de las letras
+//////////////////////////inicio de main/////////////////////////////////////////////////////////////////////////
+int main(){
+	PswitchDo();
+}
+///////////////////////////fin de main////////////////////////////////////////////////////////////////////////////
+void PswitchDo(void){
+	int op;
+	uno:
+	system("cls");
+	PMENUSwitch();
+		printf("\nIngresa la opcion deseada no olvides que antes\nde ir al cuestionario debes ver la informacion !\n");
+	scanf("%d",&op);
 		switch(op)
 		{
 			case 1:
-				T1();
-				T2();
-				T3();
-				PmostrarTeoria();
-				getch();
+				Pteoria();
+				goto uno;
 			break;
 			case 2:
 				Pproblemas();
-				getch();
+				goto uno;
 			break;
 			case 3:
 				printf("salir del programa");
 			break;
-			default: printf("Vuelve a escoger una opcion valida"); 
-		break;
+
+			default: 
+			printf("Vuelve a escoger una opcion valida"); 
+			goto uno;
+			break;
 
 		}
-	}
 }
-int PMENUSwitch(){
-	int op;
+void PMENUSwitch(){
 	Sleep(40);
-	printf("\nMENU Switch \n");
+	SC(6);printf("\nMENU Switch \n");SC(7);
 	Sleep(20);
 	printf("1.- Informacion: Como usar la funcion switch?...\n");
 	printf("2.- Problemario: \n");
 	printf("3.- Terminar programa \n");
-	printf("\nIngresa la opcion deseada no olvides que antes\nde ir al cuestionario debes ver la informacion !\n");
-	scanf("%d",&op);
-	return op;
 }
 
 void Pproblemas(void){
 		int r=0,r1,r9=0,op;
 		system("cls");
-	SC(4);printf("\t\tPARA PASAR A LA SIGUIENTE PARTE ES NECESARIO TENER MAS DE CINCO PREGUNTAS CORRECTAS\n");SC(7);
+
+	SC(4);printf("\t\tPARA PASAR A LA SIGUIENTE PARTE ES NECESARIO TENER MAS DE SEIS PREGUNTAS CORRECTAS\n");SC(7);
 
 	do{
 	for(r9=0;r9<=3;r9++)
@@ -111,10 +117,10 @@ void Pproblemas(void){
 	SC(3);printf("b) %cQue le hace falta al programa:\n",168);SC(7);
 	printf(" switch( ){\n\tcase 1:\n\tbrake:}\n");
 	printf("1) Una variable\n");
-	printf("2) Una variable con un valor asignado\n");
+	printf("2) Un break\n");
 	printf("3) Un caracter\n");
 	scanf("%d",&r1);
-		if(r1==2){
+		if(r1==1){
 		r=r+1;	
 		printf("Felicidades la respuesta es correcta\n");
 		r9=r9+3;
@@ -214,7 +220,7 @@ void Pproblemas(void){
 	{
 	SC(3);printf("e) %cPara que sirve el comando default?\n",168);SC(7);
 	printf("1) Para iniciar un caso\n");
-	printf("2) Para invalidar las demas opciones\n");
+	printf("2) Para ejecutar si no se cumple ninguno de los casos anteriores\n");
 	printf("3) ninguna de las anteriores\n");
 		scanf("%d",&r1);
 		if(r1==2){
@@ -282,23 +288,23 @@ void Pproblemas(void){
 	SC(3);printf("g) Revisa la sintaxis del siguiente programa y encuentra el error si es que hay\n");SC(7);
 	printf("\tswitch(cate){\n");
 	printf("\tcase 1: nsue=sue*1.15;\n");
-	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n");
-	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
+	printf("\tprintf(\"&quot;su categoria es %d!n!n&quot;,cate);\n");
+	printf("\tprintf(\"&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
 	printf("\tbreak;\n");
 	printf("\tcase 2:nsue=sue*1.10;\n");
-	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n");
-	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
+	printf("\tprintf(\"&quot;su categoria es %d!n!n&quot;,cate);\n");
+	printf("\tprintf(\"&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
 	printf("\tbreak;\n");
 	printf("\tcase 3:nsue=sue*1.08;\n");
-	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n");
-	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
+	printf("\tprintf(\"&quot;su categoria es %d!n!n&quot;,cate);\n");
+	printf("\tprintf(\"&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
 	printf("\tbreak;\n");
 	printf("\tcase 4:\n");
 	printf("\tnsue=sue*1.07;\n");
-	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n");
-	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
+	printf("\tprintf(\"&quot;su categoria es %d!n!n&quot;,cate);\n");
+	printf("\tprintf(\"&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
 	printf("\tbreak;\n");
-	printf("\tdefault: printf(&quot;!n!n categoria no\n");
+	printf("\tdefault: printf(\"&quot;!n!n categoria no\n");
 	printf("\taceptada!n!n&quot;);\n");
 	printf("\tbreak;\n");
 	printf("1) } final\n");
@@ -351,8 +357,8 @@ void Pproblemas(void){
 	printf("\tbreak;\n");
 	printf("\tcase 4:\n");
 	printf("\tnsue=sue*1.07;\n");
-	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n");
-	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n");
+	printf("\tprintf(&quot;su categoria es %d!n!n&quot;,cate);\n\"");
+	printf("\tprintf(&quot;su nuevo sueldo es %f!n!n&quot;,nsue);\n\"");
 	printf("\tbreak;\n");
 	printf("\tdefault: printf(&quot;!n!n categoria no\n");
 	printf("\taceptada!n!n&quot;);\n");
@@ -502,33 +508,59 @@ void Pproblemas(void){
 		system("pause");
 		system("cls");
 	printf("calificacion = %d",r);
-	}while(r<5);
+	if(r<=5){
+	printf("\nSi deseas volver a contestar el examen presiona 1\n");
+	printf("Si deseas continuar con el programa presiona 2 \n");
+	scanf("%d",&op);
+	}
+	if(op==2)r=r+6;
+	system("cls");
+	}while(r<=6);
 	system("pause");
-	getch();
 }
-void PmostrarTeoria(void){	
-	printf("presiona enter para volver al inicio");
-	int opcion;
-    do {
+void Pteoria(void){
+				T1();
+				T2();
+				T3();
+				Ejemplos();
+}
+void Ejemplos(void){	
+int op=0;
+    do { // inicio de ciclo do-while 
     	system("cls");
         mostrarMenu();
-        printf("Seleccione un ejemplo: ");
-        scanf("%d", &opcion);
-        switch (opcion) {
-            case 1: {
+        printf("\tSeleccione un ejemplo: ");
+        scanf("%d", &op);
+        switch (op) { // Inicio de switch 
+            case 1: {system("cls"); // Inicio de case 1
                 int numero;
-                printf(" \t\t || Este ejemplo nos muestra la lectura de los numeros ingresados || \n\n");
+                printf("\n");
+                  SC(6);   printf("  \t\t 1. Uso de switch con numeros \n\n");SC(7);
+                printf(" \t\t || Este ejemplo nos muestra la lectura de los numeros ingresados || \n\n");               
                 printf("Ingrese un valor entre 1 y 5: \n\n");
-                scanf("%d", &numero);
-                SwitchNumeros(numero);
-                getch();
-                break;
+                printf("\t"); scanf("%d", &numero);
+                printf("\t"); SwitchNumeros(numero );
+                printf("\n");
+                printf(" \t\t||* Desarrollo de la funcion switch para realizar este ejercicio *|| \n\n");    
+                printf(" switch (opcion) {\n");
+                printf(" case 1: {\n");
+                printf(" int numero;\n");
+                printf(" printf(%cIngrese un valor entre 1 y 5:%c);\n" ,34,34);
+                printf(" scanf(%cd%c, &numero);\n", 34,34,100);
+                printf(" switchNumeros(numero );\n");
+                printf(" break; \n");
+                printf(" }\n\n");
+           SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+                getch(); // retorna el caracter leido desde el teclado 
+                break; // fin de case 1
             }
-            case 2: {
-                int subOpcion;
-                printf("\n Seleccione una opcion de Trigonometria:\n");
-                printf(" \t\t|| Este ejemplo muestra calculos trigonometricos a calcular || \n");
-                printf("1. Seno \n");
+            case 2: {system("cls");//inicio case 2
+                int subOpcion; 
+                 printf("\n");
+                  SC(6);printf("  \t\t 2. Uso de switch con trigonometria \n\n");SC(7);
+				printf(" \t\t|| Este ejemplo muestra calculos trigonometricos a calcular || \n");  
+                printf("\n Seleccione una opcion de Trigonometria:\n"); 
+                printf("1. Seno \n");           
                 printf("2. Coseno \n");
                 printf("3. Tangente \n");
                 printf("4. Salir \n");
@@ -536,12 +568,14 @@ void PmostrarTeoria(void){
                 scanf("%d", &subOpcion);
                 SwitchTrigonometrico(subOpcion);
                  getch();
-                break;
+                break;// fin de case 2
             }
-            case 3: {
+            case 3: {system("cls");//inicio case 3
                 int subOpcion;
-                printf("\n Seleccione una opcion de Potencias:\n");
+                 printf("\n");
+                SC(6);printf("  \t\t 3. Uso de switch con potencias \n\n");SC(7);
                 printf(" \t\t || Este ejemplo muestra calculos de potencia a calcular || \n");
+                printf("\n Seleccione una opcion de Potencias:\n");
                 printf("1. Potencia cuadrada\n");
                 printf("2. Potencia X^Y\n");
                 printf("3. Salir\n");
@@ -549,10 +583,10 @@ void PmostrarTeoria(void){
                 scanf("%d", &subOpcion);
                 SwitchPotencias(subOpcion);
                  getch();
-                break;
+                break; // fin de case 3
             }
-            case 4: {
-                int opcion2 = SUBMENU2();
+            case 4: {system("cls");//inicio case 4
+                int opcion2 = SUBMENU2(); //SUBMENU DE IMAGINARIOS
                 switch(opcion2) {
                     case 1: calcularSumaImaginarios(); break;
                     case 2: calcularRestaImaginarios(); break;
@@ -561,10 +595,10 @@ void PmostrarTeoria(void){
                     case 5: printf("Salida del submenu imaginarios\n"); break;
                     default: printf("Opcion incorrecta\n"); break;
                 }
-                break;
+                break;// fin de case 4
             }
-            case 5: {
-                int opcion2 = SUBMENU3();
+            case 5: {system("cls");//funcion para borrar lo mostrado en la visualizacion del programa
+                int opcion2 = SUBMENU3();// SUBMENU DE RACIONALES 
                 switch(opcion2) {
                     case 1: calcularSumaRacionales(); break;
                     case 2: calcularRestaRacionales(); break;
@@ -574,140 +608,184 @@ void PmostrarTeoria(void){
                     default: printf("Opcion incorrecta\n"); break;
                      getch();
                 }
-                break;
+                break;// fin de case 5
             }
-            case 6:
-                printf("Saliendo del programa...\n");
-                getch();
-                break;
-            default:
-                printf("Opcion incorrecta\n");
-                break;
-        }
-    } while(opcion != 6);
+            case 6://inicio case 6
+                printf("Regresando al menu principal\n");
+				break;
+            default: 
+                printf("Opcion incorrecta, vuelve a escoger una opcion\n");
+                break; // fin de case 6
+        }// fin de swtch
+    } while(op != 6); // fin de ciclo do-while 
 
 
 }
-void SwitchNumeros(int numero) {
-	switch (numero) {
-    
+void SwitchNumeros(int numero) { // DEARROLLO DE switch DE EJEMPLO NUMEROS 
+    switch (numero) {// inicio de swtch
         case 1: printf(" Uno \n\n"); 
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");     
-        printf(" \t\t | Presiona cualquier tecla para volver a menu | ");
 		break;
-        case 2: printf(" Dos \n\n");    
-		 printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-        printf(" \t\t | Presiona cualquier tecla para volver a menu | "); 
+        case 2: printf(" Dos \n\n");   
 		 break;
         case 3: printf(" Tres \n\n"); 
-   printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");                 
-        printf(" \t\t | Presiona cualquier tecla para volver a menu | ");
 		break;
         case 4: printf(" Cuatro \n\n");
- printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-        printf(" \t\t | Presiona cualquier tecla para volver a menu | ");
 		 break;
         case 5: printf(" Cinco \n\n");
 		 break;
-	printf ( "  A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio \n\n Switch (opcion) { \n case : { \n int numero; \n printf(Ingrese un valor entre 1 y 5:)/ EN ESTA LINEAA \n scanf( %d, &numero) \n SwitchNumeros(numero)  \n\n");         
-        printf(" \t\t | Presiona cualquier tecla para volver a menu | ");
         default:
             printf("El numero esta fuera de rango, ingresa otro numero entre el 1 y 5 \n\n");
                 scanf("%i", &numero);
                 SwitchNumeros(numero);
 				
-    }
+    }// fin de swtch
 }
-void SwitchTrigonometrico(int opcion) {
-    float X, R;
+
+
+void SwitchTrigonometrico(int opcion) {/////// Desarrollo de calculos para  trigonometricos //////////
+    float X, R;// inicio de swtch
     switch (opcion) {
-        case 1:
+        case 1: system("cls");//
+         printf("\n");
+            printf(" \t 1. Seno \n\n"); 
             printf("Digita los grados = ");
             scanf("%f", &X);
             R = (X * M_PI) / 180.0;
-            printf("El seno del angulo %5.1f = %5.2f \n\n", X, sin(R));
-            printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-              printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
-        case 2:
+             printf("\n");
+            printf("El seno del angulo %5.1f = %5.2f \n\n\n", X, sin(R)); 
+            printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+            printf("switch (opcion) { \n");
+            printf("case 1: \n");
+            printf("printf(%cDigita los grados = %c); \n" ,34,34);
+            printf("scanf(%cf%c, &X); \n",34,34,102);
+            printf(" printf(%cEl seno del angulo 5.1f = 5.2f%c) , X, sin(R); \n", 34,34);
+            printf(" break; \n\n\n");
+              SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break;  // fin de case 1
+		getch();
+        case 2:system("cls"); //
+         printf("\n");
+         printf("\t2. Coseno \n\n");
             printf("Digita los grados = ");
             scanf("%f", &X);
             R = (X * M_PI) / 180.0;
-            printf("El coseno del angulo %5.1f = %5.2f \n\n", X, cos(R));
-             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-               printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
-        case 3:
+             printf("\n");
+            printf("El coseno del angulo %5.1f = %5.2f \n\n\n", X, cos(R));
+             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+             printf("switch (opcion) { \n");
+             printf("case 2:\n");
+             printf("printf(%cDigita los grados = %c); \n" ,34,34);
+             printf("scanf(%cf%c, &X); \n",34,34,102); 
+             printf("R = (X * M_PI) / 180.0; \n");
+             printf("printf(%cEl coseno del angulo 5.1f = 5.2f %c, X, cos(R));\n" ,34,34);
+             printf("break;\n\n\n");
+                SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break; // fin de case2
+        case 3:system("cls"); //
+         printf("\n");
+         printf("\t 3. Tangente \n\n");
             printf(" Digita los grados = ");
             scanf("%f", &X);
             R = (X * M_PI) / 180.0;
-            printf("La tangente del angulo %5.1f = %5.2f \n\n", X, tan(R));
-             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-             printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
-        case 4:
+             printf("\n");
+            printf("La tangente del angulo %5.1f = %5.2f \n\n\n", X, tan(R));
+             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+             printf("switch (opcion) { \n");
+             printf(" case 3:\n");
+             printf("printf(%cDigita los grados = %c); \n" ,34,34);
+             printf("scanf(%cf%c, &X); \n",34,34,102);
+             printf("R = (X * M_PI) / 180.0;\n");
+             printf("printf(%cLa tangente del angulo 5.1f = 5.2f %c, X, tan(R));\n" ,34,34);
+             printf("break;\n\n\n");
+              SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break;  // fin de case3
+        case 4://
             printf("Salida del submenu trigonometricos \n\n");
-             printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
+               SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break; // fin de case
         default:
             printf("Opcion incorrecta \n");
             break;
-    }
-}
-void SwitchPotencias(int opcion) {
+    }// fin de swtch
+}////Fin de calculos//////
+//////////////// Desarrollo de calculos para Potencias /////////////////////
+ void SwitchPotencias(int opcion) {
     float X, Y, R;
-    switch (opcion) {
-        case 1:
+    switch (opcion) { // inicio de switch 
+        case 1:  system("cls");//
+            printf("\t\t1. Potencia cuadrada\n\n");
             printf("Digita la base de la potencia = ");
             scanf("%f", &X);
             printf("La potencia de %5.1f ^ 2 = %5.2f  \n\n", X, pow(X, 2));
-             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio *||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-             printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
-        case 2:
+             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");    
+			 printf("switch (opcion) {\n"); 
+			 printf("case 1:  \n"); 
+	         printf("printf(%cDigita la base de la potencia= %c); \n" ,34,34); 
+			 printf("scanf(%cf%c, &X); \n",34,34,102);
+			 printf("printf(%cLa potencia de 5.1f ^ 2 = 5.2f %c, X, pow(X, 2));\n" ,34,34); 
+			 printf("break;\n\n");
+              SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break; // fin de case 1
+        case 2: system("cls");//
+         printf("\t\t2. Potencia X^Y\n\n");
             printf("Digita la base de la potencia = ");
             scanf("%f", &X);
             printf("Digita el exponente = ");
             scanf("%f", &Y);
             R = pow(X, Y);
             printf("La potencia de %5.1f ^ %5.1f = %5.2f  \n\n", X, Y, R);
-             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-             printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
-        case 3:
+             printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+             printf("switch (opcion) {\n"); 
+			 printf("case 2:  \n"); 
+	         printf("printf(%cDigita la base de la potencia= %c); \n" ,34,34); 	         
+			 printf("scanf(%cf%c, &X); \n",34,34,102);
+			 printf("printf(%cDigita el exponente = %c);\n",34,34);
+			 printf("scanf(%cf%c, &Y); \n",34,34,102);
+			 printf("R = pow(X, Y);\n");
+			 printf("printf(%cLa potencia de 5.1f ^ 2 = 5.2f %c, X, Y, R);\n" ,34,34); 
+			 printf("break;\n\n");
+               SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
+            break; // fin de case 2 
+        case 3:  system("cls");//
             printf("Salida del submenu potencias \n");
              printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-            break;
+            break;// fin de case
         default:
             printf("Opcion incorrecta \n");
             break;
-    }
-}
-int SUBMENU2(void) {
+    } // fin de switch
+}////////Fin de calculos///////////
+
+int SUBMENU2(void) {//////////Menu De imaginarios//////////
     int OPCION;
     printf("\t\t MENU IMAGINARIOS \n");
     printf("\t\t 1.- Suma \n");
-    printf("\t\t 2.- Resta \n");
+    printf("\t\t 2.- Resta \n"); 
     printf("\t\t 3.- Producto \n");
     printf("\t\t 4.- Division \n");
     printf("\t\t 5.- Salida\n");
     printf("OPCION: "); scanf("%d", &OPCION);
     return OPCION;
-}
-int SUBMENU3(void) {
+} /////////////////////////////////
+
+int SUBMENU3(void) {//////////Menu Racionales//////////
     int OPCION;
     printf("\t\t MENU RACIONALES \n");
-    printf("\t\t 1.- Suma \n");
+    printf("\t\t 1.- Suma \n"); 	
     printf("\t\t 2.- Resta \n");
     printf("\t\t 3.- Producto \n");
     printf("\t\t 4.- Division \n");
     printf("\t\t 5.- Salida\n");
     printf("OPCION: "); scanf("%d", &OPCION);
     return OPCION;
-}
-void calcularSumaImaginarios() {
+}//////////////////////////////
+
+void calcularSumaImaginarios() {///////// Inicio Desarrolo de suma imaginarios///////////
     float a, b, c, d;
-    printf("Ingrese la parte real del primer numero: ");
+    system("cls");
+    printf("\n");
+     SC(6);printf("\t\t 1.- Suma \n\n"); SC(7);
+	printf("Ingrese la parte real del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese la parte imaginaria del primer numero: ");
     scanf("%f", &b);
@@ -716,12 +794,24 @@ void calcularSumaImaginarios() {
     printf("Ingrese la parte imaginaria del segundo numero: ");
     scanf("%f", &d);
     printf("La suma es: %f + %fi\n", a + c, b + d);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+    printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+      printf(" break; \t\t\ Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+      SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularRestaImaginarios() {
+}//////Fin de desarrollo/////////
+
+void calcularRestaImaginarios() {//////// Inicio Desarrolo de resta imaginarios//////////
     float a, b, c, d;
+    system("cls");
+    printf("\n");
+    SC(6);printf("\t\t 2.- Resta \n\n");SC(7);
     printf("Ingrese la parte real del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese la parte imaginaria del primer numero: ");
@@ -731,12 +821,24 @@ void calcularRestaImaginarios() {
     printf("Ingrese la parte imaginaria del segundo numero: ");
     scanf("%f", &d);
     printf("La resta es: %f + %fi\n", a - c, b - d);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+   printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+     SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularProductoImaginarios() {
+}////////Fin de desarrollo /////////////
+
+void calcularProductoImaginarios() {////////// Inicio de Desarrollo de producto imaginarios///////
     float a, b, c, d, real, imag;
+     system("cls");
+     printf("\n");
+    SC(6);printf("\t\t 3.- Producto \n\n");  SC(7);
     printf("Ingrese la parte real del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese la parte imaginaria del primer numero: ");
@@ -748,12 +850,24 @@ void calcularProductoImaginarios() {
     real = (a * c) - (b * d);
     imag = (a * d) + (b * c);
     printf("El producto es: %f + %fi\n", real, imag);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+       printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+      SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularDivisionImaginarios() {
+}///// Fin de desarrollo/////
+
+void calcularDivisionImaginarios() {////////// Inicio de Desarrollo division de imaginarios///////
     float a, b, c, d, real, imag, denom;
+    system("cls");
+    printf("\n");
+    SC(6); printf("\t\t 4.- Division \n\n");SC(7);
     printf("Ingrese la parte real del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese la parte imaginaria del primer numero: ");
@@ -766,12 +880,24 @@ void calcularDivisionImaginarios() {
     real = ((a * c) + (b * d)) / denom;
     imag = ((b * c) - (a * d)) / denom;
     printf("La division es: %f + %fi\n", real, imag);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+     printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+      printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+     SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularSumaRacionales() {
+}/////Fin de desarrollo/////
+
+void calcularSumaRacionales() {////////// Inicio de Desarrollo de suma Racionales///////
     float a, b, c, d;
+    system("cls");
+    printf("\n");
+     SC(6);printf("\t\t 1.- Suma \n\n"); SC(7);
     printf("Ingrese el numerador del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese el denominador del primer numero: ");
@@ -781,12 +907,24 @@ void calcularSumaRacionales() {
     printf("Ingrese el denominador del segundo numero: ");
     scanf("%f", &d);
     printf("La suma es: %f / %f\n", (a * d) + (c * b), b * d);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+        printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+      SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularRestaRacionales() {
+}/////Fin de desarrollo/////
+
+void calcularRestaRacionales() {////////// Inicio de Desarrollo de resta Racionales///////
     float a, b, c, d;
+     system("cls");
+    printf("\n");
+    SC(6);printf("\t\t 2.- Resta \n\n");SC(7);
     printf("Ingrese el numerador del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese el denominador del primer numero: ");
@@ -796,12 +934,24 @@ void calcularRestaRacionales() {
     printf("Ingrese el denominador del segundo numero: ");
     scanf("%f", &d);
     printf("La resta es: %f / %f\n", (a * d) - (c * b), b * d);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+       printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+    SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularProductoRacionales() {
+}/////Fin de desarrollo/////
+
+void calcularProductoRacionales() {////////// Inicio de Desarrollo de producto Racionales///////
     float a, b, c, d;
+    system("cls");
+     printf("\n");
+    SC(6);printf("\t\t 3.- Producto \n\n"); SC(7); 
     printf("Ingrese el numerador del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese el denominador del primer numero: ");
@@ -811,13 +961,24 @@ void calcularProductoRacionales() {
     printf("Ingrese el denominador del segundo numero: ");
     scanf("%f", &d);
     printf("El producto es: %f / %f\n", a * c, b * d);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
-     
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+    printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+     SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void calcularDivisionRacionales() {
+}//////Fin de desarrollo/////
+
+void calcularDivisionRacionales() {////////// Inicio de Desarrollo de division Racionales///////
     float a, b, c, d;
+    system("cls");
+    printf("\n");
+     SC(6);printf("\t\t 4.- Division \n\n");SC(7);
     printf("Ingrese el numerador del primer numero: ");
     scanf("%f", &a);
     printf("Ingrese el denominador del primer numero: ");
@@ -827,24 +988,33 @@ void calcularDivisionRacionales() {
     printf("Ingrese el denominador del segundo numero: ");
     scanf("%f", &d);
     printf("La division es: %f / %f\n", a * d, b * c);
-     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion Switch para realizar este ejercicio h*||\n\n Switch (int opcion ) {    \t  | inicio de switch y se declara como entero la variable   \n case x:               \t\t  | Se hace el desarrollo del algoritmo dentro de cada case  \n  break;        \t\t  | Con break se termina de desarrollar cada case  \n default:      \t\t\t | Sirve para indicar que los case han terminado  \n }        \t\t\t  |  El cierre de corchete indica que el Switch llego a su fin  \n\n");
-     printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");
+     printf("\n\n");
+     printf(" \t\t||* A continuacion se muestra el desarrollo de la funcion switch para realizar este ejercicio *||\n\n ");
+      printf("switch (opcion) { \n");
+     printf(" case : \n");
+     printf(" Desarrollo del algoritmo o casos a realizar \n");
+     printf(" break; \t\t Al termino de cada case se utiliza break \n");
+     printf(" default:\n");
+     printf(" }     fin de switch \n");
+     printf("\n\n");
+     SC(4);printf(" \t\t | PRESIONA CUALQUIER TECLA PARA VOLVER AL MENU  | ");SC(7);
       getch();
-}
-void mostrarMenu() {
-    printf("\n");
-    printf("  \t\t|   MENU DE EJEMPLOS CON EL USO DE SWITCH   | \n\n");
+}//////Fin de desarrollo/////
+ 
+void mostrarMenu() {//////Visualizacion del Menu General ////////
+    printf("\n\n");
+        SC(6);printf("  \t\t||   MENU DE EJEMPLOS CON EL USO DE SWITCH   || \n\n");  SC(7);
     printf("  \t\t    Elige un numero de ejemplo  \n\n");
     printf("  \t\t 1. Uso de switch con numeros \n");
     printf("  \t\t 2. Uso de switch con trigonometria \n");
     printf("  \t\t 3. Uso de switch con potencias \n");
     printf("  \t\t 4. Uso de switch con numeros imaginarios \n");
     printf("  \t\t 5. Uso de switch con numeros racionales \n");
-    printf("  \t\t 6. Salir \n");
+    printf("  \t\t 6. Salir \n\n");
 }
 void T1(void){
 	system("cls");
-	SC(5);printf("\t\tTeoria de comando switch\n");SC(7);
+	SC(5);printf("\n\t\tTeoria de comando switch\n\n");SC(7);
 	printf("\tPara comenzar con el conocimiento de esta condicional iniciaremos con\n\tla definici%cn y el funcionamiento\n",162);
 	printf("\tEl condicional switch es una estructura de control que permite manejar\n\tm%cltiples casos de una variable\n",163);
 	printf("\tLas partes que conforman esta condicional son las siguientes\n");
@@ -869,13 +1039,12 @@ void T2(void){
 	SC(7);
 	printf("\t\t\t\t Contenido del programa");SC(4); printf("\tEn este espacio se puede desarrollar la opcion que escogimos\n");
 	SC(7);
-	printf("\t\t\t brake;"); SC(4); printf("\tEsta funcion nos sirve para terminar la opcion que estamos trabajando\n");
+	printf("\t\t\t break;"); SC(4); printf("\tEsta funcion nos sirve para terminar la opcion que estamos trabajando\n");
 	SC(7);
 	printf("\t\t\t default:"); SC(4); printf("\tEste comando invalida todos los valores que no tenemos en los casos \n\t\t\t\t\t\t\tque vamos a ocupar que se puedan ingresar en la opcion a\n");
 	SC(7);
 	printf("\t\t}");SC(4); printf("\t\tCon esta llave terminamos el ciclo y podemos continuar con el programa\n");
 	SC(7);
-	
 	system("pause");
 	system("cls");
 }
@@ -892,25 +1061,18 @@ void T3(void){
 	printf("\n\t\t\t\t brake;"); SC(4) ; printf("\thacer las veces que sean necesarias durante la duracion del programa propuesto"); SC(7);
 	printf("\n\t\t\t\t default:");
 	printf("\n\t\t\t}");	
-	printf("\n\t\t\t brake;");
+	printf("\n\t\t\t break;");
 	printf("\n\t\t\t default:");
 	printf("\n\t\t}");
-	pausa(2);
-	pausa(1);
-}
-void pausa(int tipo){
-	if(tipo==1){
-		printf("\n\nPresione enter para continuar ...\n\n");
-		while(!kbhit());
-	}
-	if(tipo==2){
-		printf("\n\nEspere un momento ...");
-		Beep(2500,2500);
-	}
+	system("pause");
+	system("cls");
 }
 
 /*
-void SC(int ForgC){
+void SC(int ForgC){//esta funcion es para el cambio de color
+=======
+
+
  WORD wColor;
 
   HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -923,4 +1085,6 @@ void SC(int ForgC){
  return;
 }
 
+
 */
+
