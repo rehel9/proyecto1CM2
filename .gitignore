@@ -52,10 +52,10 @@ Mkfile.old
 dkms.conf
 
 
-.json
-.vsidx
-.lock
-.wsuo
-.db
-.ipch
-.sqlite
+*.json
+*.vsidx
+*.lock
+*.wsuo
+*.db
+*.ipch
+*.sqlite
