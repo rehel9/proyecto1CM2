@@ -18,7 +18,7 @@ int main(){
 		printf("");
 		printf("\t\t\t\tBienvenido, %cQue quieres aprender hoy?\n\n", 168);
 		printf("\t\t\t\t\t1.- If-Else\n\t\t\t\t\t2.- Switch\n\t\t\t\t\t3.-SALIR\n");
-		scanf("%d", &opc);
+		opc=verificadorCaracter();
 		switch(opc){
 			case 1:
 				system("cls");
